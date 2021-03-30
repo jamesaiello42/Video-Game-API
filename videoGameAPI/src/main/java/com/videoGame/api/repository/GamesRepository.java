@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.videoGame.api.entity.Games;
 
-public interface GamesRespository extends CrudRepository<Games, Long> {
-
+public interface GamesRepository extends CrudRepository<Games, Long> {
+	public Games findById(long id);
 }

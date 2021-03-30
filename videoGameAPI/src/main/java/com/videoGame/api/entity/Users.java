@@ -14,13 +14,14 @@ public class Users {
 	private String lastName;
 	private String email;
 	private String password;
+	private String salt;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
-	@Column(unique = true)
+
 	public String getUsername() {
 		return username;
 	}
@@ -55,9 +56,11 @@ public class Users {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-	
-	
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
 	
 }
