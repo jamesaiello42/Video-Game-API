@@ -16,8 +16,11 @@ public class Users {
 	private String password;
 	private String salt;
 	
+//	private Orders
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	public Long getId() {
 		return id;
 	}

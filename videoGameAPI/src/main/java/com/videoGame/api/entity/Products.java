@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Products {
@@ -11,6 +12,9 @@ public class Products {
 	private String upc;
 	private Double price;
 	private int numberInStock;
+	
+    private Games games;
+    private Platforms platforms;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,7 +43,21 @@ public class Products {
 		this.numberInStock = numberInStock;
 	}
 	
+	@OneToOne(mappedBy = "products")
+	public Games getGames() {
+		return games;
+	}
 	
+	public void setGames(Games games) {
+		this.games = games;
+	}
 	
-	
+	@OneToOne(mappedBy = "products")
+	public Platforms getPlatforms() {
+		return platforms;
+	}
+	public void setPlatforms(Platforms platforms) {
+		this.platforms = platforms;
+	}
+		
 }
