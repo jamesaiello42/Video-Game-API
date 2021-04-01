@@ -1,5 +1,6 @@
 package com.videoGame.api.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ public class Products {
 	private int numberInStock;
 	
     private Games games;
+	
     private Platforms platforms;
 	
 	@Id
@@ -43,7 +45,7 @@ public class Products {
 		this.numberInStock = numberInStock;
 	}
 	
-	@OneToOne(mappedBy = "products")
+	@OneToOne(mappedBy = "products", cascade = CascadeType.ALL)
 	public Games getGames() {
 		return games;
 	}
@@ -52,7 +54,7 @@ public class Products {
 		this.games = games;
 	}
 	
-	@OneToOne(mappedBy = "products")
+	@OneToOne(mappedBy = "products", cascade = CascadeType.ALL)
 	public Platforms getPlatforms() {
 		return platforms;
 	}

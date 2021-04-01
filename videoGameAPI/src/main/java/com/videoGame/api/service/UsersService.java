@@ -1,6 +1,5 @@
 package com.videoGame.api.service;
 
-import java.util.Optional;
 import java.util.Set;
 
 import javax.naming.AuthenticationException;

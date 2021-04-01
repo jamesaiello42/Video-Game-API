@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Platforms {
@@ -21,12 +23,14 @@ public class Platforms {
 	private String vendor;
 	private Date releaseDate;
 	
+	@JsonIgnore
 	private Products products;
+	
 	private Set<Games> games;
 	
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	public Long getId() {
 		return id;
 	}
@@ -53,8 +57,8 @@ public class Platforms {
 		this.releaseDate = releaseDate;
 	}
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "product_id", referencedColumnName = "id")
+	@OneToOne
+	@JoinColumn(name = "product_id")
 	public Products getProducts() {
 		return products;
 	}
@@ -63,7 +67,7 @@ public class Platforms {
 	}
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "games_plaform",
+	@JoinTable(name = "games_platform",
 		joinColumns = @JoinColumn(name = "game_id", referencedColumnName = "id"),
 		inverseJoinColumns = @JoinColumn(name = "platform_id", referencedColumnName = "id"))
 	public Set<Games> getGames() {

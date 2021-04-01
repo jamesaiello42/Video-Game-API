@@ -1,10 +1,14 @@
 package com.videoGame.api.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Users {
@@ -16,7 +20,7 @@ public class Users {
 	private String password;
 	private String salt;
 	
-//	private Orders
+	private Set<Orders> orders;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -64,6 +68,15 @@ public class Users {
 	}
 	public void setSalt(String salt) {
 		this.salt = salt;
+	}
+
+	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
+	public Set<Orders> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Orders> orders) {
+		this.orders = orders;
 	}
 	
 }
