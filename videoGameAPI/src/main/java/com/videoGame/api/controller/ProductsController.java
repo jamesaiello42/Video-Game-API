@@ -23,10 +23,19 @@ public class ProductsController {
 		return new ResponseEntity<Object>(productsService.getProducts(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public ResponseEntity<Object> addProduct(@RequestBody Products products) {
+	@RequestMapping(value = "/create/game", method = RequestMethod.POST)
+	public ResponseEntity<Object> addProductGame(@RequestBody Products products) {
 		try {
-			return new ResponseEntity<Object>(productsService.createProduct(products), HttpStatus.CREATED);
+			return new ResponseEntity<Object>(productsService.createProductGame(products), HttpStatus.CREATED);
+		} catch (Exception e) {
+			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@RequestMapping(value = "/create/platform", method = RequestMethod.POST)
+	public ResponseEntity<Object> addProductPlatfrom(@RequestBody Products products) {
+		try {
+			return new ResponseEntity<Object>(productsService.createProductPlatform(products), HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}

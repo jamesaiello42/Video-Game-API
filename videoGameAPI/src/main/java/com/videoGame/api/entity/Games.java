@@ -3,7 +3,7 @@ package com.videoGame.api.entity;
 import java.sql.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,19 +14,20 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 @Entity
 public class Games {
 	private Long id;
 	private String name;
 	private Date releaseDate;
-
+	
 	@JsonIgnore
 	private Products products;
-	
-	private Set<Platforms> platforms;
+	//private Set<Platforms> platforms;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(generator = "product_seq")
+	@Column(name = "product_id")
 	public Long getId() {
 		return id;
 	}
@@ -61,13 +62,13 @@ public class Games {
 		this.products = products;
 	}
 
-	@ManyToMany(mappedBy = "games")
+/*	@ManyToMany(mappedBy = "games")
 	public Set<Platforms> getPlatforms() {
 		return platforms;
 	}
 	
 	public void setPlatforms(Set<Platforms> platforms) {
 		this.platforms = platforms;
-	}
+	}*/
 	
 }

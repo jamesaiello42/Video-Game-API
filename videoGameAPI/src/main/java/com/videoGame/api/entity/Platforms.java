@@ -26,11 +26,11 @@ public class Platforms {
 	@JsonIgnore
 	private Products products;
 	
-	private Set<Games> games;
+//	private Set<Games> games;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
+	@GeneratedValue(generator = "product_seq")
+	@Column(name = "product_id")
 	public Long getId() {
 		return id;
 	}
@@ -66,7 +66,7 @@ public class Platforms {
 		this.products = products;
 	}
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	/*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "games_platform",
 		joinColumns = @JoinColumn(name = "game_id", referencedColumnName = "id"),
 		inverseJoinColumns = @JoinColumn(name = "platform_id", referencedColumnName = "id"))
@@ -76,5 +76,5 @@ public class Platforms {
 	
 	public void setGames(Set<Games> games) {
 		this.games = games;
-	}
+	}*/
 }

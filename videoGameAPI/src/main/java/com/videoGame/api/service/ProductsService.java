@@ -15,8 +15,22 @@ public class ProductsService {
 		return repo.findAll();
 	}
 	
-	public Products createProduct(Products products) {
-		return repo.save(products);
+	public Products createProductGame(Products products) {
+		Products productGame = new Products();
+		productGame.setUpc(products.getUpc());
+		productGame.setPrice(products.getPrice());
+		productGame.setNumberInStock(products.getNumberInStock());
+		productGame.setGames(products.getGames());
+		return repo.save(productGame);
+	}
+	
+	public Products createProductPlatform(Products products) {
+		Products productPlatform = new Products();
+		productPlatform.setUpc(products.getUpc());
+		productPlatform.setPrice(products.getPrice());
+		productPlatform.setNumberInStock(products.getNumberInStock());
+		productPlatform.setPlatforms(products.getPlatforms());
+		return repo.save(productPlatform);
 	}
 	
 }

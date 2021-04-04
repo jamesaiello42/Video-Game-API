@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Products {
@@ -14,12 +15,12 @@ public class Products {
 	private Double price;
 	private int numberInStock;
 	
-    private Games games;
-	
-    private Platforms platforms;
+	private Games games;
+	private Platforms platforms;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "product_seq")
 	public Long getId() {
 		return id;
 	}
