@@ -3,6 +3,7 @@ package com.videoGame.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,6 +39,17 @@ public class ProductsController {
 			return new ResponseEntity<Object>(productsService.createProductPlatform(products), HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Object> deleteProduct(@PathVariable Long id) {
+		try {
+			productsService.deleteProduct(id);
+			return new ResponseEntity<Object>("Successful delete product of id: " + id, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<Object>("Unable to delete product", HttpStatus.BAD_REQUEST);
 		}
 	}
 }

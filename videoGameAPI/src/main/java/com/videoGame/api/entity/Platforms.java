@@ -1,6 +1,6 @@
 package com.videoGame.api.entity;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -30,14 +32,15 @@ public class Platforms {
 	
 	@Id
 	@GeneratedValue(generator = "product_seq")
-	@Column(name = "product_id")
+	@Column(name = "platform_product_id")
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
+	@Column(unique = true, length = 50)
 	public String getName() {
 		return name;
 	}
@@ -50,15 +53,18 @@ public class Platforms {
 	public void setVendor(String vendor) {
 		this.vendor = vendor;
 	}
+	
+	@Temporal(TemporalType.DATE)
 	public Date getReleaseDate() {
 		return releaseDate;
 	}
+	
 	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 	
 	@OneToOne
-	@JoinColumn(name = "product_id")
+	@JoinColumn(name = "platform_product_id")
 	public Products getProducts() {
 		return products;
 	}

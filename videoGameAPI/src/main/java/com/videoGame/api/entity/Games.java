@@ -27,7 +27,7 @@ public class Games {
 
 	@Id
 	@GeneratedValue(generator = "product_seq")
-	@Column(name = "product_id")
+	@Column(name = "game_product_id")
 	public Long getId() {
 		return id;
 	}
@@ -35,7 +35,7 @@ public class Games {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -53,7 +53,7 @@ public class Games {
 	}
 
 	@OneToOne
-	@JoinColumn(name = "product_id")
+	@JoinColumn(name = "game_product_id")
 	public Products getProducts() {
 		return products;
 	}

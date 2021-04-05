@@ -20,6 +20,7 @@ public class ProductsService {
 		productGame.setUpc(products.getUpc());
 		productGame.setPrice(products.getPrice());
 		productGame.setNumberInStock(products.getNumberInStock());
+		productGame.setProductType("Game");
 		productGame.setGames(products.getGames());
 		return repo.save(productGame);
 	}
@@ -29,8 +30,13 @@ public class ProductsService {
 		productPlatform.setUpc(products.getUpc());
 		productPlatform.setPrice(products.getPrice());
 		productPlatform.setNumberInStock(products.getNumberInStock());
+		productPlatform.setProductType("Platform");
 		productPlatform.setPlatforms(products.getPlatforms());
 		return repo.save(productPlatform);
+	}
+	
+	public void deleteProduct(Long id) {
+		repo.deleteById(id);
 	}
 	
 }

@@ -14,6 +14,7 @@ public class Products {
 	private String upc;
 	private Double price;
 	private int numberInStock;
+	private String productType;
 	
 	private Games games;
 	private Platforms platforms;
@@ -44,6 +45,13 @@ public class Products {
 	}
 	public void setNumberInStock(int numberInStock) {
 		this.numberInStock = numberInStock;
+	}
+	
+	public String getProductType() {
+		return productType;
+	}
+	public void setProductType(String productType) {
+		this.productType = productType;
 	}
 	
 	@OneToOne(mappedBy = "products", cascade = CascadeType.ALL)
