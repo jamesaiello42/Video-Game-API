@@ -6,16 +6,18 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "platforms"})
 public class Games {
 	private Long id;
 	private String name;
@@ -23,7 +25,8 @@ public class Games {
 	
 	@JsonIgnore
 	private Products products;
-	//private Set<Platforms> platforms;
+	
+	private Set<Platforms> platforms;
 
 	@Id
 	@GeneratedValue(generator = "product_seq")
@@ -62,13 +65,16 @@ public class Games {
 		this.products = products;
 	}
 
-/*	@ManyToMany(mappedBy = "games")
+	@ManyToMany
+	@JoinTable(name = "games_platform",
+			joinColumns = @JoinColumn(name = "game_product_id"),
+			inverseJoinColumns = @JoinColumn(name = "platform_product_id"))
 	public Set<Platforms> getPlatforms() {
 		return platforms;
 	}
 	
 	public void setPlatforms(Set<Platforms> platforms) {
 		this.platforms = platforms;
-	}*/
+	}
 	
 }

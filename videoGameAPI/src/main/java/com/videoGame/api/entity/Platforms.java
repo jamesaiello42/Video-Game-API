@@ -17,8 +17,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+
 public class Platforms {
 	private Long id;
 	private String name;
@@ -28,7 +30,7 @@ public class Platforms {
 	@JsonIgnore
 	private Products products;
 	
-//	private Set<Games> games;
+	private Set<Games> games;
 	
 	@Id
 	@GeneratedValue(generator = "product_seq")
@@ -72,15 +74,15 @@ public class Platforms {
 		this.products = products;
 	}
 	
-	/*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany
 	@JoinTable(name = "games_platform",
-		joinColumns = @JoinColumn(name = "game_id", referencedColumnName = "id"),
-		inverseJoinColumns = @JoinColumn(name = "platform_id", referencedColumnName = "id"))
+		joinColumns = @JoinColumn(name = "platform_product_id"),
+		inverseJoinColumns = @JoinColumn(name = "game_product_id"))
 	public Set<Games> getGames() {
 		return games;
 	}
 	
 	public void setGames(Set<Games> games) {
 		this.games = games;
-	}*/
+	}
 }
