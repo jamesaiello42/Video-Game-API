@@ -1,23 +1,24 @@
 package com.videoGame.api.entity;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "platforms"})
 public class Games {
 	private Long id;
 	private String name;
@@ -51,6 +52,7 @@ public class Games {
 		return releaseDate;
 	}
 
+	@Temporal(TemporalType.DATE)
 	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
@@ -65,10 +67,7 @@ public class Games {
 		this.products = products;
 	}
 
-	@ManyToMany
-	@JoinTable(name = "games_platform",
-			joinColumns = @JoinColumn(name = "game_product_id"),
-			inverseJoinColumns = @JoinColumn(name = "platform_product_id"))
+	@ManyToMany(mappedBy = "games", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	public Set<Platforms> getPlatforms() {
 		return platforms;
 	}

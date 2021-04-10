@@ -2,7 +2,6 @@ package com.videoGame.api.entity;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +22,7 @@ public class Users {
 	private Set<Orders> orders;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	public Long getId() {
 		return id;
@@ -70,7 +69,7 @@ public class Users {
 		this.salt = salt;
 	}
 
-	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "users")
 	public Set<Orders> getOrders() {
 		return orders;
 	}

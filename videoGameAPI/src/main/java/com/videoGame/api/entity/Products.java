@@ -1,12 +1,19 @@
 package com.videoGame.api.entity;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Products {
@@ -18,6 +25,9 @@ public class Products {
 	
 	private Games games;
 	private Platforms platforms;
+	
+	@JsonIgnore
+	private Set<Orders> orders;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -69,6 +79,14 @@ public class Products {
 	}
 	public void setPlatforms(Platforms platforms) {
 		this.platforms = platforms;
+	}
+	
+	@OneToMany(mappedBy = "products")
+	public Set<Orders> getOrders() {
+		return orders;
+	}
+	public void setOrders(Set<Orders> orders) {
+		this.orders = orders;
 	}
 		
 }
