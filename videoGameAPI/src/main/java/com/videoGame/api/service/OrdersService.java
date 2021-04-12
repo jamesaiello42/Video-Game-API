@@ -40,7 +40,7 @@ public class OrdersService {
 		}
 	}
 	
-	public Orders intializeNewOrder(Orders order, Users user) {		
+	private Orders intializeNewOrder(Orders order, Users user) {		
 		Orders orders = new Orders(); 
 		
 		orders.setProducts(convertToProductSet(order));

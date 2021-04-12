@@ -48,11 +48,11 @@ public class Games {
 		this.name = name;
 	}
 
+	@Temporal(TemporalType.DATE)
 	public Date getReleaseDate() {
 		return releaseDate;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
@@ -67,7 +67,7 @@ public class Games {
 		this.products = products;
 	}
 
-	@ManyToMany(mappedBy = "games", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "games", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public Set<Platforms> getPlatforms() {
 		return platforms;
 	}
