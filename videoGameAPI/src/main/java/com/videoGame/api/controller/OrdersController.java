@@ -20,7 +20,7 @@ public class OrdersController {
 	private OrdersService ordersService;
 	
 	@RequestMapping(value="/createOrder", method=RequestMethod.POST)
-	public ResponseEntity<Object> register(@RequestBody Orders orders, @PathVariable Long id) throws Exception {
+	public ResponseEntity<Object> createOrder(@RequestBody Orders orders, @PathVariable Long id) throws Exception {
 		return new ResponseEntity<Object>(ordersService.createOrder(orders, id), HttpStatus.CREATED);
 	}
 }

@@ -3,11 +3,13 @@ package com.videoGame.api.entity;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -17,11 +19,12 @@ public class Orders {
 	private Long id;
 	private int quantity;
 	private Date dateOrdered;
+	private double total;
 	
 	@JsonIgnore
 	private Users users;
 	
-	private Products products;
+	private Set<Products> products;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,7 +48,13 @@ public class Orders {
 		this.dateOrdered = dateOrdered;
 	}
 	
-    @ManyToOne
+    public double getTotal() {
+		return total;
+	}
+	public void setTotal(double total) {
+		this.total = total;
+	}
+	@ManyToOne
     @JoinColumn(name = "buyer_id")
 	public Users getUsers() {
 		return users;
@@ -55,12 +64,11 @@ public class Orders {
 		this.users = users;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name = "product_id")	
-	public Products getProducts() {
+	@ManyToMany(mappedBy = "orders", cascade = CascadeType.ALL)
+	public Set<Products> getProducts() {
 		return products;
 	}
-	public void setProducts(Products products) {
+	public void setProducts(Set<Products> products) {
 		this.products = products;
 	}
 	
