@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.videoGame.api.entity.Games;
-import com.videoGame.api.entity.Orders;
 import com.videoGame.api.entity.Platforms;
-import com.videoGame.api.entity.Products;
-import com.videoGame.api.entity.Users;
 import com.videoGame.api.repository.GamesRepository;
 import com.videoGame.api.repository.PlatformsRepository;
 
@@ -36,23 +33,36 @@ public class GamesService {
 	public Games assignPlatform(Set<Platforms> platform, Long id) throws Exception {
 		try {
 			Games games = repo.findById(id).orElse(null);
-			Set<Games> multiGames = new HashSet<>();
+			Set<Platforms> newPlatform = new HashSet<Platforms>();
+			Set<Long> platIds = new HashSet<Long>();
+			
+			for (Platforms plat : platform) {
+				platIds.add(plat.getId());
+			}
+			
+			Iterable<Platforms> platforms = platformRepo.findAllById(platIds);
 
-			if (games == null) {
+			if (games == null || platforms == null) {
 				throw new Exception("Game does not exist.");
 			}
 			
-			games.setPlatforms(platform);
-			
-			for (Platforms plat : platform) {
-				multiGames.add(games);
+			for (Platforms plat : platforms) {
+				newPlatform.add(plat);
 			}
 			
 			
-			
+			games.setPlatforms(newPlatform);
+			addPlatformToGames(games);
 			return repo.save(games);
 		} catch(Exception e) {
 			throw e;
+		}
+	}
+	
+	private void addPlatformToGames(Games games) {
+		Set<Platforms> platforms = games.getPlatforms();
+		for (Platforms platform : platforms) {
+			platform.getGames().add(games);
 		}
 	}
 	

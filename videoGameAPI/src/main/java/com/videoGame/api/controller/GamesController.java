@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.videoGame.api.entity.Games;
 import com.videoGame.api.entity.Platforms;
-import com.videoGame.api.entity.Products;
 import com.videoGame.api.service.GamesService;
 
 @RestController
