@@ -38,9 +38,9 @@ public class OrdersService {
 		}
 	}
 	
-	private Orders intializeNewOrder(Orders order, Users user) {		
+	private Orders intializeNewOrder(Orders order, Users user) throws Exception {		
 		Orders orders = new Orders(); 
-		
+	
 		orders.setProducts(convertToProductSet(order));
 		orders.setDateOrdered(new Date());
 		orders.setQuantity(order.getProducts().size());
@@ -60,7 +60,7 @@ public class OrdersService {
 		return total;
 	}
 
-	private Set<Products> convertToProductSet(Orders orders) {
+	private Set<Products> convertToProductSet(Orders orders) throws Exception {
 		Set<Long> productIds = new HashSet<Long>();
 		Iterable<Products> iterable;
 		
@@ -71,7 +71,12 @@ public class OrdersService {
 		iterable = productRepo.findAllById(productIds);
 		Set<Products> set = new HashSet<Products>();
 		for(Products product : iterable) {
-			set.add(product);	
+			if (product.getNumberInStock() - 1 < 0)
+				throw new Exception("Item out of stock");
+			else {	
+				product.setNumberInStock(product.getNumberInStock() - 1);
+				set.add(product);
+			}
 		}
 		
 		return set;

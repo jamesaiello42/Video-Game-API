@@ -15,8 +15,10 @@ public class Employees {
 	private Date hireDate;
 	private Double salary;
 	private String role;
+	private String email;
 	private String username;
 	private String password;
+	private String salt;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -56,6 +58,12 @@ public class Employees {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -67,5 +75,11 @@ public class Employees {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 }

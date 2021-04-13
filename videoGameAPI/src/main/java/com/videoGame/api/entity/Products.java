@@ -93,7 +93,7 @@ public class Products {
 		this.platforms = platforms;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	   @JoinTable(name = "products_orders",
        joinColumns = @JoinColumn(name = "products_id", referencedColumnName = "id"),
        inverseJoinColumns = @JoinColumn(name = "orders_id", referencedColumnName = "id"))

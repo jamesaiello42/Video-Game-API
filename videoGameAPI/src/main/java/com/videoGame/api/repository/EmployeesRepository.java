@@ -6,4 +6,6 @@ import com.videoGame.api.entity.Employees;
 
 public interface EmployeesRepository extends CrudRepository<Employees, Long> {
 	public Employees findById(long id);
+
+	public Employees findByUsername(String username);
 }
