@@ -15,6 +15,10 @@ public class EmployeesService {
 	@Autowired
 	private EmployeesRepository repo;
 	
+	public Iterable<Employees> getEmployees() {
+		return repo.findAll();
+	}
+	
 	public Employees createEmp(Employees emp) throws AuthenticationException {
 		Employees newEmp = new Employees();
 		Employees foundEmp = repo.findByUsername(emp.getUsername());
@@ -38,5 +42,22 @@ public class EmployeesService {
 			throw new AuthenticationException("That employee username is not avaiable.");
 		}
 		
+	}
+	
+	public Employees updateEmp(Employees emp, Long id) throws Exception {
+		Employees newEmp = repo.findById(id).orElse(null);
+		
+		if (newEmp == null) {
+			throw new Exception("Employee does not exist.");
+		}
+		
+		newEmp.setRole(emp.getRole());
+		newEmp.setHireDate(emp.getHireDate());
+		newEmp.setSalary(emp.getSalary());
+		return repo.save(newEmp);
+	}
+	
+	public void deleteEmp(Long id) {
+		repo.deleteById(id);
 	}
 }
