@@ -4,7 +4,7 @@
 	1.	Call Type: POST
 		Request URL: http://videogameapi-dev.us-west-2.elasticbeanstalk.com/users/register
 		JSON: 
-				```
+				```json
 					{
 						"username": "jaiello",
 						"email": "test@example.com",
@@ -17,7 +17,7 @@
 		Call Type: POST
 		Request URL: http://videogameapi-dev.us-west-2.elasticbeanstalk.com/users/login
 		JSON: 
-				```
+				```json
 					{
 						"username": "jaiello",
 						"password": "test"
@@ -34,7 +34,7 @@
 	1.	Call Type: POST
 		Request URL: http://localhost:8080/products/create/game
 		JSON: 
-				```
+				```json
 					{
 						"upc": "1",
 						"price": 60.0,
@@ -48,7 +48,7 @@
 	2.	Call Type: POST
 		Request URL: http://videogameapi-dev.us-west-2.elasticbeanstalk.com/products/create/platform
 		JSON: 
-				```
+				```json
 					{
 						"upc": "2",
 						"price": 399.0,
