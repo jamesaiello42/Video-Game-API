@@ -5,6 +5,7 @@ import javax.naming.AuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,5 +42,24 @@ public class UsersController {
 	public ResponseEntity<Object> getUsers() {
 		return new ResponseEntity<Object>(usersService.getUsers(), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Object> getCustomer(@PathVariable Long id) {
+		try {
+			return new ResponseEntity<Object>(usersService.getUserById(id), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Object> deleteEmployee(@PathVariable Long id) {
+		try {
+			usersService.deleteUser(id);
+			return new ResponseEntity<Object>("Successful deleted user of id: " + id, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<Object>("Unable to delete user", HttpStatus.BAD_REQUEST);
+		}
+	}	
 	
 }

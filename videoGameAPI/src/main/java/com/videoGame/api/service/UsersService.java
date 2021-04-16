@@ -50,4 +50,19 @@ public class UsersService {
 		return usersRepository.findAll();
 	}
 	
+	public Users getUserById(Long id) throws Exception {
+		try {
+			if (usersRepository.findById(id).orElse(null) == null)
+				throw new Exception("Unable to find user");
+			return usersRepository.findById(id).orElse(null);
+		} catch (Exception e) {
+			throw new Exception("Unable to find user");
+		}
+	}
+	
+	public void deleteUser(Long id) {
+		usersRepository.deleteById(id);
+	}
+	
+	
 }
