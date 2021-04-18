@@ -1,4 +1,3 @@
-
 # Video Game API
 ## Sample JSON Requests
 ### Users Entity
@@ -28,7 +27,7 @@
 ```
 	3.	Call Type: GET
 		Request URL: http://videogameapi-dev.us-west-2.elasticbeanstalk.com/users
-	3. 	Call Type: GET by ID
+	4. 	Call Type: GET by ID
 		Request URL: http://videogameapi-dev.us-west-2.elasticbeanstalk.com/users/1
 	5.	Call Type: DELETE
 		Request URL: http://videogameapi-dev.us-west-2.elasticbeanstalk.com/users/1
@@ -157,3 +156,44 @@
 		"vendor": "Sony"
 	}
 ```
+
+## Screenshots of API Running
+![Create User](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/users_create.jpg)
+
+![Login User](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/users_login.jpg)
+
+![Upldate Platform](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/platforms_update.jpg)
+
+![Create Platform](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/platform_create.jpg)
+
+![Order Deletion](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/order_delete.jpg)
+
+![List One User](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/list_one_user.jpg)
+
+![List One Product](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/list_one_product.jpg)
+
+![List All Users](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/list_all_users.jpg)
+
+![List All Products](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/list_all_products.jpg)
+
+![List One Employee](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/get_one_employee.jpg)
+
+![List All Employees](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/get_all_employees.jpg)
+
+![Update Game](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/game_update.jpg)
+
+![Create Game](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/game_create.jpg)
+
+![Update Employee](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/employee_update.jpg)
+
+![Delete Employee](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/employee_delete.jpg)
+
+![Delete User](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/delete_user.jpg)
+
+![Delete Product](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/delete_product.jpg)
+ 
+![Create Order](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/create_order.jpg)
+
+![Create Employee](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/create_employee.jpg)
+
+![Add Platforms to Games](https://github.com/jamesaiello42/Video-Game-API/blob/main/screenshots/add_games_to_platform.jpg)
