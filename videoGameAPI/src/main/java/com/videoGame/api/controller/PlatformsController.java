@@ -18,6 +18,7 @@ public class PlatformsController {
 	@Autowired
 	private PlatformsService service;
 	
+	// Update a platform's name, vendor, and release date by id
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Object> updatePlatform(@RequestBody Platforms platforms, @PathVariable Long id){
 		try {

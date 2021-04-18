@@ -22,6 +22,7 @@ public class GamesController {
 	@Autowired
 	private GamesService service;
 	
+	// Update a game's name and release date by id
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Object> updateGame(@RequestBody Games game, @PathVariable Long id){
 		try {
@@ -31,6 +32,7 @@ public class GamesController {
 		}
 	}
 	
+	// Assign and relate a game to one or more platforms
 	@RequestMapping(value = "/{id}/assignPlatform/", method = RequestMethod.POST)
 	public ResponseEntity<Object> addProductPlatfrom(@RequestBody Set<Platforms> platform, @PathVariable Long id) {
 		try {

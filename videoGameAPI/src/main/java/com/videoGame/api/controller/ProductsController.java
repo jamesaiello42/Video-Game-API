@@ -19,11 +19,23 @@ public class ProductsController {
 	@Autowired
 	private ProductsService productsService;
 	
+	// Gets all products stored in the database
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<Object> getProducts() {
 		return new ResponseEntity<Object>(productsService.getProducts(), HttpStatus.OK);
 	}
 	
+	// Gets one product by id
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Object> getProduct(@PathVariable Long id) {
+		try {
+			return new ResponseEntity<Object>(productsService.getProductById(id), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	// Creates a new game
 	@RequestMapping(value = "/create/game", method = RequestMethod.POST)
 	public ResponseEntity<Object> addProductGame(@RequestBody Products products) {
 		try {
@@ -33,6 +45,7 @@ public class ProductsController {
 		}
 	}
 	
+	// Creates a new platform
 	@RequestMapping(value = "/create/platform", method = RequestMethod.POST)
 	public ResponseEntity<Object> addProductPlatfrom(@RequestBody Products products) {
 		try {
@@ -42,7 +55,7 @@ public class ProductsController {
 		}
 	}
 	
-	
+	// Deletes a product from the database
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Object> deleteProduct(@PathVariable Long id) {
 		try {

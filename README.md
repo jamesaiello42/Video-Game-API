@@ -1,10 +1,10 @@
 # Video Game API
 ## Sample JSON Requests
 ### Users Entity
+```json
 	1.	Call Type: POST
 		Request URL: http://videogameapi-dev.us-west-2.elasticbeanstalk.com/users/register
 		JSON: 
-```json
 		{
 			"username": "jaiello",
 			"email": "test@example.com",
@@ -13,17 +13,18 @@
 			"password": "test"
 		}
 ```
+```json
 	2.	
 		Call Type: POST
 		Request URL: http://videogameapi-dev.us-west-2.elasticbeanstalk.com/users/login
 		JSON: 
-```json
+
 		{
 			"username": "jaiello",
 			"password": "test"
 		}
 ```
-	3.	Call Type: GET
+	3.	 Call Type: GET
 		Request URL: http://videogameapi-dev.us-west-2.elasticbeanstalk.com/users
 	4. 	Call Type: GET by ID
 		Request URL: http://videogameapi-dev.us-west-2.elasticbeanstalk.com/users/1

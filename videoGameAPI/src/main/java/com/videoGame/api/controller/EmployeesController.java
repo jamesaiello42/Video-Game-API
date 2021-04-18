@@ -18,11 +18,23 @@ public class EmployeesController {
 	@Autowired
 	private EmployeesService empService;
 	
+	// Gets all employees
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Object> getProducts() {
+	public ResponseEntity<Object> getEmployees() {
 		return new ResponseEntity<Object>(empService.getEmployees(), HttpStatus.OK);
 	}
 	
+	// Gets one employee by an id
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Object> getEmp(@PathVariable Long id) {
+		try {
+			return new ResponseEntity<Object>(empService.getEmpById(id), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	// Creates an employee
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public ResponseEntity<Object> createEmp(@RequestBody Employees emp) {
 		try {
@@ -32,6 +44,7 @@ public class EmployeesController {
 		}
 	}
 	
+	// Updates an employee salary, hire date, and role by id
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Object> updateEmp(@RequestBody Employees emp, @PathVariable Long id){
 		try {
@@ -41,6 +54,7 @@ public class EmployeesController {
 		}
 	}
 	
+	// Delete employee by id
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Object> deleteEmployee(@PathVariable Long id) {
 		try {

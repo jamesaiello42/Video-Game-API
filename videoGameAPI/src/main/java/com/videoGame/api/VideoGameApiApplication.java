@@ -10,7 +10,7 @@ public class VideoGameApiApplication {
 
 	public static void main(String[] args) {
 		// Useful for timestamps to be correct 
-		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+		TimeZone.setDefault(TimeZone.getTimeZone("America/Chicago"));
 		
 		SpringApplication.run(VideoGameApiApplication.class, args);
 	}

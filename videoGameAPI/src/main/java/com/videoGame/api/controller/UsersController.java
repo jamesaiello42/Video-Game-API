@@ -20,6 +20,7 @@ public class UsersController {
 	@Autowired
 	private UsersService usersService;
 	
+	// Creates a new user
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public ResponseEntity<Object> register(@RequestBody Users cred) {
 		try {
@@ -29,6 +30,7 @@ public class UsersController {
 		}
 	}
 	
+	// Authenticates a user, logs them in
 	@RequestMapping(value = "/login", method=RequestMethod.POST)
 	public ResponseEntity<Object> login(@RequestBody Users cred) {
 		try {
@@ -38,11 +40,13 @@ public class UsersController {
 		}
 	}
 	
+	// Gets all users from the database
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<Object> getUsers() {
 		return new ResponseEntity<Object>(usersService.getUsers(), HttpStatus.OK);
 	}
 	
+	// Returns a single user based on an id
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Object> getCustomer(@PathVariable Long id) {
 		try {
@@ -52,6 +56,7 @@ public class UsersController {
 		}
 	}
 	
+	// Deletes a single user by an id
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Object> deleteEmployee(@PathVariable Long id) {
 		try {
