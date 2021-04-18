@@ -140,7 +140,7 @@ Please let me know if you have questions the setup.
 	Request URL: http://videogameapi-dev.us-west-2.elasticbeanstalk.com/employees
 4.	Call Type: GET by ID 
 	Request URL: http://videogameapi-dev.us-west-2.elasticbeanstalk.com/employees/2
-4.	Call Type: GET by ID 
+4.	Call Type: DELETE
 	Request URL: http://videogameapi-dev.us-west-2.elasticbeanstalk.com/employees/2
 ```
 ### Games Entity
