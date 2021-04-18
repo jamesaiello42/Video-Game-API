@@ -1,4 +1,24 @@
-# Video Game API
+# Promineo Tech Final Project - Video Game API
+## Short Description of Project
+The Video Game API is an e-commerce backend where users can be created. Users can authenticate (log in) through the backend. Users can place orders to buy products and orders can be removed from the database. Products such as video games and video platforms (consoles) can be added to the database. Employees can be created and deleted. Certain fields can be updated. The PUT JSON calls show what can be updated in the database.
+
+## Installation
+Type the following to bring a copy of the project to your local computer:
+```bash
+git clone https://github.com/jamesaiello42/Video-Game-API.git
+```
+You will need have MYSQL installed on your computer and to have at least Java 8 installed on your computer.
+
+You will need to download Spring Tools from https://spring.io/tools
+
+You will also need to run this statement in MYSQL:
+```sql
+create database video_games;
+```
+Open Spring Tools application on your computer and execute the application.
+
+Please let me know if you have questions the setup.
+
 ## Sample JSON Requests
 ### Users Entity
 ```json
